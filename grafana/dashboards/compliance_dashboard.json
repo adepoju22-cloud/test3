@@ -1,0 +1,166 @@
+{
+  "title": "Security Compliance Dashboard",
+  "uid": "compliance-dashboard",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": { "from": "now-7d", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Compliance %",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 60 },
+              { "color": "green", "value": 85 }
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT ROUND(100.0 * SUM(CASE WHEN status='PASS' THEN 1 ELSE 0 END) / COUNT(*), 2) AS compliance_pct FROM compliance_results;"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Total Findings",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS total FROM compliance_results;" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Passed",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "green", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS passed FROM compliance_results WHERE status='PASS';" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Failed",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 0 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "red", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS failed FROM compliance_results WHERE status='FAIL';" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Critical",
+      "type": "stat",
+      "gridPos": { "h": 5, "w": 6, "x": 0, "y": 6 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "dark-red", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS critical FROM compliance_results WHERE status='FAIL' AND severity='Critical';" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "High",
+      "type": "stat",
+      "gridPos": { "h": 5, "w": 6, "x": 6, "y": 6 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "orange", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS high FROM compliance_results WHERE status='FAIL' AND severity='High';" }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Medium",
+      "type": "stat",
+      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 6 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "yellow", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS medium FROM compliance_results WHERE status='FAIL' AND severity='Medium';" }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Low",
+      "type": "stat",
+      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 6 },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "green", "mode": "fixed" } } },
+      "targets": [
+        { "queryType": "table", "rawQueryText": "SELECT COUNT(*) AS low FROM compliance_results WHERE status='FAIL' AND severity='Low';" }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Findings by Severity",
+      "type": "piechart",
+      "gridPos": { "h": 9, "w": 8, "x": 0, "y": 11 },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT severity, COUNT(*) AS count FROM compliance_results WHERE status='FAIL' GROUP BY severity;"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Findings by Framework",
+      "type": "barchart",
+      "gridPos": { "h": 9, "w": 8, "x": 8, "y": 11 },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT 'CIS' AS framework, COUNT(*) AS findings FROM compliance_results WHERE status='FAIL' AND framework LIKE '%CIS%' UNION ALL SELECT 'NIST', COUNT(*) FROM compliance_results WHERE status='FAIL' AND framework LIKE '%NIST%' UNION ALL SELECT 'ISO27001', COUNT(*) FROM compliance_results WHERE status='FAIL' AND framework LIKE '%ISO27001%';"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Top Violated Rules",
+      "type": "table",
+      "gridPos": { "h": 9, "w": 8, "x": 16, "y": 11 },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT rule_id, rule_name, COUNT(*) AS violations FROM compliance_results WHERE status='FAIL' GROUP BY rule_id, rule_name ORDER BY violations DESC LIMIT 10;"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Compliance Trend",
+      "type": "timeseries",
+      "gridPos": { "h": 9, "w": 24, "x": 0, "y": 20 },
+      "fieldConfig": { "defaults": { "unit": "percent" } },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT scan_time AS time, ROUND(100.0 * SUM(CASE WHEN status='PASS' THEN 1 ELSE 0 END) / COUNT(*), 2) AS compliance_pct FROM compliance_results GROUP BY scan_time ORDER BY scan_time;"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "All Findings",
+      "type": "table",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 29 },
+      "targets": [
+        {
+          "queryType": "table",
+          "rawQueryText": "SELECT resource_name, resource_type, rule_id, rule_name, severity, status, framework, scan_time FROM compliance_results ORDER BY severity ASC, status ASC;"
+        }
+      ]
+    }
+  ]
+}

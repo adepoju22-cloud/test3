@@ -1,0 +1,57 @@
+version: "3.9"
+
+# =====================================================================
+# Security Compliance Dashboard - Docker Compose
+# Run everything locally with:  docker compose up --build
+# =====================================================================
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: compliance-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=docker
+      - DATABASE_URL=sqlite:////code/database/compliance.db
+      - LOG_FILE=logs/scanner.log
+      - RESOURCES_FILE=app/resources/resources.json
+      - RULES_DIR=app/rules
+      - FRAMEWORK_MAPPING_FILE=app/rules/framework_mapping.json
+      - REPORTS_DIR=reports_output
+    volumes:
+      - ./database:/code/database
+      - ./logs:/code/logs
+      - ./reports_output:/code/reports_output
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: compliance-grafana
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      # Community plugin that lets Grafana query a SQLite file directly.
+      - GF_INSTALL_PLUGINS=frser-sqlite-datasource
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=frser-sqlite-datasource
+    volumes:
+      - ./database:/var/lib/grafana-sqlite:ro
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:

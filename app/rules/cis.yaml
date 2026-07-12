@@ -1,0 +1,572 @@
+rules:
+- id: CIS-001
+  title: VM Disk Encryption
+  description: Ensure virtual machine disks are encrypted at rest.
+  severity: Critical
+  resource_type: VirtualMachine
+  field: encrypted
+  operator: equals
+  expected_value: true
+  recommendation: Enable disk encryption for all virtual machine volumes.
+  framework_mapping:
+    cis: CIS-001
+    nist: SC-28
+    iso27001: A.8.24
+- id: CIS-002
+  title: VM No Public IP
+  description: Virtual machines should not be directly exposed to the internet.
+  severity: High
+  resource_type: VirtualMachine
+  field: public_ip
+  operator: equals
+  expected_value: false
+  recommendation: Remove public IP addresses and route traffic through a load balancer
+    or bastion host.
+  framework_mapping:
+    cis: CIS-002
+    nist: SC-7
+    iso27001: A.8.20
+- id: CIS-003
+  title: VM Login MFA Required
+  description: Multi-factor authentication should be required for VM login.
+  severity: Critical
+  resource_type: VirtualMachine
+  field: mfa
+  operator: equals
+  expected_value: true
+  recommendation: Enforce MFA for all administrative access to virtual machines.
+  framework_mapping:
+    cis: CIS-003
+    nist: IA-2
+    iso27001: A.5.17
+- id: CIS-004
+  title: VM OS Patch Compliance
+  description: Operating system should be patched to the latest security baseline.
+  severity: High
+  resource_type: VirtualMachine
+  field: os_patched
+  operator: equals
+  expected_value: true
+  recommendation: Apply outstanding OS security patches and enable automatic patching.
+  framework_mapping:
+    cis: CIS-004
+    nist: SI-2
+    iso27001: A.8.8
+- id: CIS-005
+  title: VM Backup Enabled
+  description: Virtual machines should have automated backups enabled.
+  severity: Medium
+  resource_type: VirtualMachine
+  field: backup_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable scheduled backups with a retention policy of at least 30
+    days.
+  framework_mapping:
+    cis: CIS-005
+    nist: CP-9
+    iso27001: A.8.13
+- id: CIS-006
+  title: VM Monitoring Agent Installed
+  description: A monitoring/telemetry agent should be installed for observability.
+  severity: Low
+  resource_type: VirtualMachine
+  field: monitoring_agent_installed
+  operator: equals
+  expected_value: true
+  recommendation: Install and enable the monitoring agent on all virtual machines.
+  framework_mapping:
+    cis: CIS-006
+    nist: SI-4
+    iso27001: A.8.16
+- id: CIS-007
+  title: VM Endpoint Protection Enabled
+  description: Endpoint protection (anti-malware/EDR) should be enabled on all VMs.
+  severity: High
+  resource_type: VirtualMachine
+  field: endpoint_protection_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Deploy and enable an endpoint protection / EDR agent on all virtual
+    machines.
+  framework_mapping:
+    cis: CIS-007
+    nist: SI-3
+    iso27001: A.8.7
+- id: CIS-008
+  title: VM Disk Snapshot Enabled
+  description: Periodic disk snapshots should be enabled to support recovery.
+  severity: Low
+  resource_type: VirtualMachine
+  field: disk_snapshot_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Schedule periodic disk snapshots in addition to standard backups.
+  framework_mapping:
+    cis: CIS-008
+    nist: CP-9
+    iso27001: A.8.13
+- id: CIS-010
+  title: Storage Encryption At Rest
+  description: Storage accounts/buckets should be encrypted at rest.
+  severity: Critical
+  resource_type: Storage
+  field: encrypted
+  operator: equals
+  expected_value: true
+  recommendation: Enable server-side encryption using a managed or customer-managed
+    key.
+  framework_mapping:
+    cis: CIS-010
+    nist: SC-28
+    iso27001: A.8.24
+- id: CIS-011
+  title: Storage No Public Access
+  description: Storage containers should not allow anonymous public access.
+  severity: Critical
+  resource_type: Storage
+  field: public_access
+  operator: equals
+  expected_value: false
+  recommendation: Disable public access and use signed URLs or IAM policies instead.
+  framework_mapping:
+    cis: CIS-011
+    nist: AC-3
+    iso27001: A.8.3
+- id: CIS-012
+  title: Storage Versioning Enabled
+  description: Object versioning should be enabled to protect against accidental deletion.
+  severity: Medium
+  resource_type: Storage
+  field: versioning_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable versioning on all storage containers holding production data.
+  framework_mapping:
+    cis: CIS-012
+    nist: CP-9
+    iso27001: A.8.13
+- id: CIS-013
+  title: Storage Access Logging Enabled
+  description: Access logging should be enabled for audit and forensic purposes.
+  severity: High
+  resource_type: Storage
+  field: access_logging_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable access logging and route logs to a centralized log store.
+  framework_mapping:
+    cis: CIS-013
+    nist: AU-2
+    iso27001: A.8.15
+- id: CIS-014
+  title: Storage Lifecycle Policy Enabled
+  description: A lifecycle policy should be defined to manage data retention costs.
+  severity: Low
+  resource_type: Storage
+  field: lifecycle_policy_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Define a lifecycle policy to transition or expire old objects.
+  framework_mapping:
+    cis: CIS-014
+    nist: SI-12
+    iso27001: A.5.33
+- id: CIS-015
+  title: Storage Encryption In Transit Enforced
+  description: Storage endpoints should reject unencrypted (non-HTTPS) connections.
+  severity: High
+  resource_type: Storage
+  field: encryption_in_transit_enforced
+  operator: equals
+  expected_value: true
+  recommendation: Enforce HTTPS-only access on all storage endpoints.
+  framework_mapping:
+    cis: CIS-015
+    nist: SC-8
+    iso27001: A.8.24
+- id: CIS-016
+  title: Storage Soft Delete Enabled
+  description: Soft delete should be enabled to protect against accidental or malicious
+    deletion.
+  severity: Medium
+  resource_type: Storage
+  field: soft_delete_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable soft delete with a recovery window of at least 14 days.
+  framework_mapping:
+    cis: CIS-016
+    nist: CP-9
+    iso27001: A.8.13
+- id: CIS-020
+  title: Database Encryption At Rest
+  description: Databases should be encrypted at rest.
+  severity: Critical
+  resource_type: Database
+  field: encrypted
+  operator: equals
+  expected_value: true
+  recommendation: Enable transparent data encryption (TDE) on all database instances.
+  framework_mapping:
+    cis: CIS-020
+    nist: SC-28
+    iso27001: A.8.24
+- id: CIS-021
+  title: Database No Public Access
+  description: Databases should not be publicly accessible from the internet.
+  severity: Critical
+  resource_type: Database
+  field: public_access
+  operator: equals
+  expected_value: false
+  recommendation: Restrict database access to private network ranges and VPN/bastion
+    only.
+  framework_mapping:
+    cis: CIS-021
+    nist: SC-7
+    iso27001: A.8.20
+- id: CIS-022
+  title: Database SSL/TLS Enforced
+  description: Connections to the database should require SSL/TLS encryption in transit.
+  severity: High
+  resource_type: Database
+  field: ssl_enforced
+  operator: equals
+  expected_value: true
+  recommendation: Enforce SSL/TLS for all client connections to the database.
+  framework_mapping:
+    cis: CIS-022
+    nist: SC-8
+    iso27001: A.8.24
+- id: CIS-023
+  title: Database Automated Backups
+  description: Automated backups should be enabled with point-in-time recovery.
+  severity: Medium
+  resource_type: Database
+  field: backup_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable automated backups with at least a 7-day retention window.
+  framework_mapping:
+    cis: CIS-023
+    nist: CP-9
+    iso27001: A.8.13
+- id: CIS-024
+  title: Database Audit Logging Enabled
+  description: Database audit logging should capture all administrative and DML actions.
+  severity: High
+  resource_type: Database
+  field: audit_logging_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable audit logging and forward logs to a centralized SIEM.
+  framework_mapping:
+    cis: CIS-024
+    nist: AU-2
+    iso27001: A.8.15
+- id: CIS-025
+  title: Database Automatic Patching
+  description: Database engine should receive security patches automatically.
+  severity: Medium
+  resource_type: Database
+  field: automatic_patching
+  operator: equals
+  expected_value: true
+  recommendation: Enable the automatic minor-version patching maintenance window.
+  framework_mapping:
+    cis: CIS-025
+    nist: SI-2
+    iso27001: A.8.8
+- id: CIS-026
+  title: Database Least Privilege Roles
+  description: Database roles should be scoped to least privilege rather than broad
+    admin grants.
+  severity: Medium
+  resource_type: Database
+  field: least_privilege_db_roles
+  operator: equals
+  expected_value: true
+  recommendation: Review database role assignments and remove unnecessary privileged
+    grants.
+  framework_mapping:
+    cis: CIS-026
+    nist: AC-6
+    iso27001: A.5.18
+- id: CIS-027
+  title: Database Network Isolation
+  description: Databases should be deployed inside an isolated private subnet.
+  severity: High
+  resource_type: Database
+  field: network_isolation_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Place the database in a private subnet with no direct internet route.
+  framework_mapping:
+    cis: CIS-027
+    nist: SC-7
+    iso27001: A.8.22
+- id: CIS-030
+  title: Network Flow Logs Enabled
+  description: VPC/VNet flow logs should be enabled for traffic visibility.
+  severity: High
+  resource_type: Network
+  field: flow_logs_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable flow logging and route logs to a central analysis workspace.
+  framework_mapping:
+    cis: CIS-030
+    nist: AU-2
+    iso27001: A.8.15
+- id: CIS-031
+  title: Network Default Deny Posture
+  description: Network security groups should default to deny-all inbound traffic.
+  severity: Critical
+  resource_type: Network
+  field: default_deny
+  operator: equals
+  expected_value: true
+  recommendation: Set the default inbound rule to deny and explicitly allow required
+    ports only.
+  framework_mapping:
+    cis: CIS-031
+    nist: AC-4
+    iso27001: A.8.20
+- id: CIS-032
+  title: Network Segmentation Enabled
+  description: Production and non-production workloads should be network-segmented.
+  severity: Medium
+  resource_type: Network
+  field: segmentation_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Apply subnet-level segmentation and restrict inter-subnet routing.
+  framework_mapping:
+    cis: CIS-032
+    nist: SC-7
+    iso27001: A.8.22
+- id: CIS-033
+  title: Network DNS Query Logging
+  description: DNS query logging should be enabled to detect anomalous resolution
+    patterns.
+  severity: Low
+  resource_type: Network
+  field: dns_logging_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable DNS query logging and forward to the SIEM for analysis.
+  framework_mapping:
+    cis: CIS-033
+    nist: AU-2
+    iso27001: A.8.16
+- id: CIS-034
+  title: Network NAT Gateway For Outbound Traffic
+  description: Outbound internet traffic from private subnets should route through
+    a managed NAT gateway.
+  severity: Medium
+  resource_type: Network
+  field: nat_gateway_used
+  operator: equals
+  expected_value: true
+  recommendation: Deploy a managed NAT gateway instead of assigning public IPs to
+    private resources.
+  framework_mapping:
+    cis: CIS-034
+    nist: SC-7
+    iso27001: A.8.20
+- id: CIS-035
+  title: Network Private Endpoints Enabled
+  description: Sensitive services should be reachable via private endpoints, not the
+    public internet.
+  severity: High
+  resource_type: Network
+  field: private_endpoints_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable private endpoints/private link for PaaS services used on
+    this network.
+  framework_mapping:
+    cis: CIS-035
+    nist: SC-7
+    iso27001: A.8.22
+- id: CIS-040
+  title: Firewall Default Deny Inbound
+  description: Firewalls should default to denying inbound traffic unless explicitly
+    allowed.
+  severity: Critical
+  resource_type: Firewall
+  field: default_deny_inbound
+  operator: equals
+  expected_value: true
+  recommendation: Configure the firewall's default inbound policy to DENY.
+  framework_mapping:
+    cis: CIS-040
+    nist: AC-4
+    iso27001: A.8.20
+- id: CIS-041
+  title: Firewall Logging Enabled
+  description: Firewall rule hits should be logged for audit and incident response.
+  severity: High
+  resource_type: Firewall
+  field: logging_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable logging on all firewall rules and forward to centralized
+    storage.
+  framework_mapping:
+    cis: CIS-041
+    nist: AU-2
+    iso27001: A.8.15
+- id: CIS-042
+  title: Firewall No Unrestricted Ports
+  description: Firewalls should not expose administrative ports (22, 3389, etc.) to
+    0.0.0.0/0.
+  severity: Critical
+  resource_type: Firewall
+  field: unrestricted_ports_open
+  operator: equals
+  expected_value: false
+  recommendation: Restrict administrative ports to known IP ranges or a bastion host.
+  framework_mapping:
+    cis: CIS-042
+    nist: SC-7
+    iso27001: A.8.20
+- id: CIS-043
+  title: Firewall Rules Reviewed Periodically
+  description: Firewall rule sets should be reviewed at least every 90 days.
+  severity: Medium
+  resource_type: Firewall
+  field: rules_reviewed_last_90_days
+  operator: equals
+  expected_value: true
+  recommendation: Establish a quarterly review process for firewall rule sets.
+  framework_mapping:
+    cis: CIS-043
+    nist: CA-7
+    iso27001: A.5.36
+- id: CIS-044
+  title: Firewall Geo-Blocking Enabled
+  description: Geo-blocking should restrict traffic from regions with no business
+    need.
+  severity: Low
+  resource_type: Firewall
+  field: geo_blocking_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable geo-blocking rules for regions outside the organization's
+    operating footprint.
+  framework_mapping:
+    cis: CIS-044
+    nist: SC-7
+    iso27001: A.8.20
+- id: CIS-045
+  title: Firewall Intrusion Detection Enabled
+  description: An intrusion detection/prevention capability should be enabled on perimeter
+    firewalls.
+  severity: High
+  resource_type: Firewall
+  field: intrusion_detection_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable IDS/IPS signatures on all perimeter firewall devices.
+  framework_mapping:
+    cis: CIS-045
+    nist: SI-4
+    iso27001: A.8.16
+- id: CIS-050
+  title: User MFA Enabled
+  description: All user accounts should have multi-factor authentication enabled.
+  severity: Critical
+  resource_type: User
+  field: mfa_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enforce MFA enrollment for all user accounts, especially privileged
+    ones.
+  framework_mapping:
+    cis: CIS-050
+    nist: IA-2
+    iso27001: A.5.17
+- id: CIS-051
+  title: User Password Expiry Policy
+  description: User accounts should be subject to a password expiry policy.
+  severity: Medium
+  resource_type: User
+  field: password_expiry_enabled
+  operator: equals
+  expected_value: true
+  recommendation: Enable password expiration and complexity requirements.
+  framework_mapping:
+    cis: CIS-051
+    nist: IA-5
+    iso27001: A.5.17
+- id: CIS-052
+  title: User Least Privilege (No Standing Admin)
+  description: Standard user accounts should not retain standing administrative privileges.
+  severity: High
+  resource_type: User
+  field: admin_privileges
+  operator: equals
+  expected_value: false
+  recommendation: Move administrative access to just-in-time elevation with approval
+    workflows.
+  framework_mapping:
+    cis: CIS-052
+    nist: AC-6
+    iso27001: A.5.18
+- id: CIS-053
+  title: User No Stale Inactive Accounts
+  description: Accounts inactive for more than 90 days should be disabled or removed.
+  severity: Medium
+  resource_type: User
+  field: inactive_over_90_days
+  operator: equals
+  expected_value: false
+  recommendation: Disable or remove accounts with no sign-in activity for 90+ days.
+  framework_mapping:
+    cis: CIS-053
+    nist: AC-2
+    iso27001: A.5.18
+- id: CIS-054
+  title: User Least Privilege Role Assignment
+  description: User role assignments should follow the principle of least privilege.
+  severity: Low
+  resource_type: User
+  field: least_privilege_applied
+  operator: equals
+  expected_value: true
+  recommendation: Review and right-size role assignments based on job function.
+  framework_mapping:
+    cis: CIS-054
+    nist: AC-6
+    iso27001: A.5.15
+- id: CIS-055
+  title: Service Account Periodically Reviewed
+  description: Service/non-human accounts should be reviewed periodically for continued
+    need.
+  severity: Medium
+  resource_type: User
+  field: service_account_reviewed
+  operator: equals
+  expected_value: true
+  recommendation: Review service accounts quarterly and disable unused credentials.
+  framework_mapping:
+    cis: CIS-055
+    nist: AC-2
+    iso27001: A.5.18
+- id: CIS-056
+  title: Privileged Access Workstation Required
+  description: Privileged administrative actions should be performed from a hardened,
+    dedicated workstation.
+  severity: High
+  resource_type: User
+  field: privileged_access_workstation_used
+  operator: equals
+  expected_value: true
+  recommendation: Require privileged access workstations (PAWs) for all administrative
+    activity.
+  framework_mapping:
+    cis: CIS-056
+    nist: AC-6
+    iso27001: A.8.1

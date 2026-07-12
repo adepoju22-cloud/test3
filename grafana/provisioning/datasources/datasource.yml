@@ -1,0 +1,16 @@
+# =====================================================================
+# Grafana datasource provisioning
+# Automatically registers the local SQLite compliance database as a
+# datasource on container startup using the frser-sqlite-datasource
+# community plugin (installed via GF_INSTALL_PLUGINS in docker-compose.yml).
+# =====================================================================
+apiVersion: 1
+
+datasources:
+  - name: ComplianceSQLite
+    type: frser-sqlite-datasource
+    access: proxy
+    isDefault: true
+    jsonData:
+      path: /var/lib/grafana-sqlite/compliance.db
+    editable: true

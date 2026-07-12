@@ -1,0 +1,254 @@
+{
+  "CIS-001": {
+    "title": "VM Disk Encryption",
+    "cis": "CIS-001",
+    "nist": "SC-28",
+    "iso27001": "A.8.24"
+  },
+  "CIS-002": {
+    "title": "VM No Public IP",
+    "cis": "CIS-002",
+    "nist": "SC-7",
+    "iso27001": "A.8.20"
+  },
+  "CIS-003": {
+    "title": "VM Login MFA Required",
+    "cis": "CIS-003",
+    "nist": "IA-2",
+    "iso27001": "A.5.17"
+  },
+  "CIS-004": {
+    "title": "VM OS Patch Compliance",
+    "cis": "CIS-004",
+    "nist": "SI-2",
+    "iso27001": "A.8.8"
+  },
+  "CIS-005": {
+    "title": "VM Backup Enabled",
+    "cis": "CIS-005",
+    "nist": "CP-9",
+    "iso27001": "A.8.13"
+  },
+  "CIS-006": {
+    "title": "VM Monitoring Agent Installed",
+    "cis": "CIS-006",
+    "nist": "SI-4",
+    "iso27001": "A.8.16"
+  },
+  "CIS-007": {
+    "title": "VM Endpoint Protection Enabled",
+    "cis": "CIS-007",
+    "nist": "SI-3",
+    "iso27001": "A.8.7"
+  },
+  "CIS-008": {
+    "title": "VM Disk Snapshot Enabled",
+    "cis": "CIS-008",
+    "nist": "CP-9",
+    "iso27001": "A.8.13"
+  },
+  "CIS-010": {
+    "title": "Storage Encryption At Rest",
+    "cis": "CIS-010",
+    "nist": "SC-28",
+    "iso27001": "A.8.24"
+  },
+  "CIS-011": {
+    "title": "Storage No Public Access",
+    "cis": "CIS-011",
+    "nist": "AC-3",
+    "iso27001": "A.8.3"
+  },
+  "CIS-012": {
+    "title": "Storage Versioning Enabled",
+    "cis": "CIS-012",
+    "nist": "CP-9",
+    "iso27001": "A.8.13"
+  },
+  "CIS-013": {
+    "title": "Storage Access Logging Enabled",
+    "cis": "CIS-013",
+    "nist": "AU-2",
+    "iso27001": "A.8.15"
+  },
+  "CIS-014": {
+    "title": "Storage Lifecycle Policy Enabled",
+    "cis": "CIS-014",
+    "nist": "SI-12",
+    "iso27001": "A.5.33"
+  },
+  "CIS-015": {
+    "title": "Storage Encryption In Transit Enforced",
+    "cis": "CIS-015",
+    "nist": "SC-8",
+    "iso27001": "A.8.24"
+  },
+  "CIS-016": {
+    "title": "Storage Soft Delete Enabled",
+    "cis": "CIS-016",
+    "nist": "CP-9",
+    "iso27001": "A.8.13"
+  },
+  "CIS-020": {
+    "title": "Database Encryption At Rest",
+    "cis": "CIS-020",
+    "nist": "SC-28",
+    "iso27001": "A.8.24"
+  },
+  "CIS-021": {
+    "title": "Database No Public Access",
+    "cis": "CIS-021",
+    "nist": "SC-7",
+    "iso27001": "A.8.20"
+  },
+  "CIS-022": {
+    "title": "Database SSL/TLS Enforced",
+    "cis": "CIS-022",
+    "nist": "SC-8",
+    "iso27001": "A.8.24"
+  },
+  "CIS-023": {
+    "title": "Database Automated Backups",
+    "cis": "CIS-023",
+    "nist": "CP-9",
+    "iso27001": "A.8.13"
+  },
+  "CIS-024": {
+    "title": "Database Audit Logging Enabled",
+    "cis": "CIS-024",
+    "nist": "AU-2",
+    "iso27001": "A.8.15"
+  },
+  "CIS-025": {
+    "title": "Database Automatic Patching",
+    "cis": "CIS-025",
+    "nist": "SI-2",
+    "iso27001": "A.8.8"
+  },
+  "CIS-026": {
+    "title": "Database Least Privilege Roles",
+    "cis": "CIS-026",
+    "nist": "AC-6",
+    "iso27001": "A.5.18"
+  },
+  "CIS-027": {
+    "title": "Database Network Isolation",
+    "cis": "CIS-027",
+    "nist": "SC-7",
+    "iso27001": "A.8.22"
+  },
+  "CIS-030": {
+    "title": "Network Flow Logs Enabled",
+    "cis": "CIS-030",
+    "nist": "AU-2",
+    "iso27001": "A.8.15"
+  },
+  "CIS-031": {
+    "title": "Network Default Deny Posture",
+    "cis": "CIS-031",
+    "nist": "AC-4",
+    "iso27001": "A.8.20"
+  },
+  "CIS-032": {
+    "title": "Network Segmentation Enabled",
+    "cis": "CIS-032",
+    "nist": "SC-7",
+    "iso27001": "A.8.22"
+  },
+  "CIS-033": {
+    "title": "Network DNS Query Logging",
+    "cis": "CIS-033",
+    "nist": "AU-2",
+    "iso27001": "A.8.16"
+  },
+  "CIS-034": {
+    "title": "Network NAT Gateway For Outbound Traffic",
+    "cis": "CIS-034",
+    "nist": "SC-7",
+    "iso27001": "A.8.20"
+  },
+  "CIS-035": {
+    "title": "Network Private Endpoints Enabled",
+    "cis": "CIS-035",
+    "nist": "SC-7",
+    "iso27001": "A.8.22"
+  },
+  "CIS-040": {
+    "title": "Firewall Default Deny Inbound",
+    "cis": "CIS-040",
+    "nist": "AC-4",
+    "iso27001": "A.8.20"
+  },
+  "CIS-041": {
+    "title": "Firewall Logging Enabled",
+    "cis": "CIS-041",
+    "nist": "AU-2",
+    "iso27001": "A.8.15"
+  },
+  "CIS-042": {
+    "title": "Firewall No Unrestricted Ports",
+    "cis": "CIS-042",
+    "nist": "SC-7",
+    "iso27001": "A.8.20"
+  },
+  "CIS-043": {
+    "title": "Firewall Rules Reviewed Periodically",
+    "cis": "CIS-043",
+    "nist": "CA-7",
+    "iso27001": "A.5.36"
+  },
+  "CIS-044": {
+    "title": "Firewall Geo-Blocking Enabled",
+    "cis": "CIS-044",
+    "nist": "SC-7",
+    "iso27001": "A.8.20"
+  },
+  "CIS-045": {
+    "title": "Firewall Intrusion Detection Enabled",
+    "cis": "CIS-045",
+    "nist": "SI-4",
+    "iso27001": "A.8.16"
+  },
+  "CIS-050": {
+    "title": "User MFA Enabled",
+    "cis": "CIS-050",
+    "nist": "IA-2",
+    "iso27001": "A.5.17"
+  },
+  "CIS-051": {
+    "title": "User Password Expiry Policy",
+    "cis": "CIS-051",
+    "nist": "IA-5",
+    "iso27001": "A.5.17"
+  },
+  "CIS-052": {
+    "title": "User Least Privilege (No Standing Admin)",
+    "cis": "CIS-052",
+    "nist": "AC-6",
+    "iso27001": "A.5.18"
+  },
+  "CIS-053": {
+    "title": "User No Stale Inactive Accounts",
+    "cis": "CIS-053",
+    "nist": "AC-2",
+    "iso27001": "A.5.18"
+  },
+  "CIS-054": {
+    "title": "User Least Privilege Role Assignment",
+    "cis": "CIS-054",
+    "nist": "AC-6",
+    "iso27001": "A.5.15"
+  },
+  "CIS-055": {
+    "title": "Service Account Periodically Reviewed",
+    "cis": "CIS-055",
+    "nist": "AC-2",
+    "iso27001": "A.5.18"
+  },
+  "CIS-056": {
+    "title": "Privileged Access Workstation Required",
+    "cis": "CIS-056",
+    "nist": "AC-6",
+    "iso27001": "A.8.1"
+  }
+}

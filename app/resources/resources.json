@@ -1,0 +1,424 @@
+{
+  "resources": [
+    {
+      "id": "res-0001",
+      "name": "vm01",
+      "type": "VirtualMachine",
+      "properties": {
+        "encrypted": true,
+        "public_ip": true,
+        "mfa": false,
+        "os_patched": true,
+        "backup_enabled": true,
+        "monitoring_agent_installed": true,
+        "endpoint_protection_enabled": true,
+        "disk_snapshot_enabled": true
+      }
+    },
+    {
+      "id": "res-0002",
+      "name": "vm02",
+      "type": "VirtualMachine",
+      "properties": {
+        "encrypted": false,
+        "public_ip": true,
+        "mfa": true,
+        "os_patched": true,
+        "backup_enabled": true,
+        "monitoring_agent_installed": true,
+        "endpoint_protection_enabled": true,
+        "disk_snapshot_enabled": true
+      }
+    },
+    {
+      "id": "res-0003",
+      "name": "vm03",
+      "type": "VirtualMachine",
+      "properties": {
+        "encrypted": false,
+        "public_ip": true,
+        "mfa": false,
+        "os_patched": false,
+        "backup_enabled": true,
+        "monitoring_agent_installed": true,
+        "endpoint_protection_enabled": false,
+        "disk_snapshot_enabled": false
+      }
+    },
+    {
+      "id": "res-0004",
+      "name": "vm04",
+      "type": "VirtualMachine",
+      "properties": {
+        "encrypted": false,
+        "public_ip": true,
+        "mfa": true,
+        "os_patched": false,
+        "backup_enabled": true,
+        "monitoring_agent_installed": true,
+        "endpoint_protection_enabled": false,
+        "disk_snapshot_enabled": true
+      }
+    },
+    {
+      "id": "res-0005",
+      "name": "vm05",
+      "type": "VirtualMachine",
+      "properties": {
+        "encrypted": false,
+        "public_ip": false,
+        "mfa": false,
+        "os_patched": true,
+        "backup_enabled": false,
+        "monitoring_agent_installed": true,
+        "endpoint_protection_enabled": false,
+        "disk_snapshot_enabled": true
+      }
+    },
+    {
+      "id": "res-0006",
+      "name": "storage01",
+      "type": "Storage",
+      "properties": {
+        "encrypted": false,
+        "public_access": false,
+        "versioning_enabled": true,
+        "access_logging_enabled": true,
+        "lifecycle_policy_enabled": true,
+        "encryption_in_transit_enforced": true,
+        "soft_delete_enabled": false
+      }
+    },
+    {
+      "id": "res-0007",
+      "name": "storage02",
+      "type": "Storage",
+      "properties": {
+        "encrypted": true,
+        "public_access": true,
+        "versioning_enabled": true,
+        "access_logging_enabled": false,
+        "lifecycle_policy_enabled": false,
+        "encryption_in_transit_enforced": false,
+        "soft_delete_enabled": false
+      }
+    },
+    {
+      "id": "res-0008",
+      "name": "storage03",
+      "type": "Storage",
+      "properties": {
+        "encrypted": true,
+        "public_access": false,
+        "versioning_enabled": false,
+        "access_logging_enabled": true,
+        "lifecycle_policy_enabled": false,
+        "encryption_in_transit_enforced": true,
+        "soft_delete_enabled": true
+      }
+    },
+    {
+      "id": "res-0009",
+      "name": "storage04",
+      "type": "Storage",
+      "properties": {
+        "encrypted": true,
+        "public_access": true,
+        "versioning_enabled": false,
+        "access_logging_enabled": false,
+        "lifecycle_policy_enabled": false,
+        "encryption_in_transit_enforced": true,
+        "soft_delete_enabled": false
+      }
+    },
+    {
+      "id": "res-0010",
+      "name": "storage05",
+      "type": "Storage",
+      "properties": {
+        "encrypted": true,
+        "public_access": true,
+        "versioning_enabled": true,
+        "access_logging_enabled": false,
+        "lifecycle_policy_enabled": false,
+        "encryption_in_transit_enforced": false,
+        "soft_delete_enabled": true
+      }
+    },
+    {
+      "id": "res-0011",
+      "name": "db01",
+      "type": "Database",
+      "properties": {
+        "encrypted": true,
+        "public_access": false,
+        "backup_enabled": true,
+        "ssl_enforced": false,
+        "audit_logging_enabled": false,
+        "automatic_patching": false,
+        "least_privilege_db_roles": true,
+        "network_isolation_enabled": false
+      }
+    },
+    {
+      "id": "res-0012",
+      "name": "db02",
+      "type": "Database",
+      "properties": {
+        "encrypted": true,
+        "public_access": true,
+        "backup_enabled": false,
+        "ssl_enforced": false,
+        "audit_logging_enabled": false,
+        "automatic_patching": false,
+        "least_privilege_db_roles": true,
+        "network_isolation_enabled": true
+      }
+    },
+    {
+      "id": "res-0013",
+      "name": "db03",
+      "type": "Database",
+      "properties": {
+        "encrypted": false,
+        "public_access": true,
+        "backup_enabled": true,
+        "ssl_enforced": true,
+        "audit_logging_enabled": true,
+        "automatic_patching": true,
+        "least_privilege_db_roles": false,
+        "network_isolation_enabled": true
+      }
+    },
+    {
+      "id": "res-0014",
+      "name": "db04",
+      "type": "Database",
+      "properties": {
+        "encrypted": false,
+        "public_access": false,
+        "backup_enabled": false,
+        "ssl_enforced": false,
+        "audit_logging_enabled": true,
+        "automatic_patching": true,
+        "least_privilege_db_roles": false,
+        "network_isolation_enabled": false
+      }
+    },
+    {
+      "id": "res-0015",
+      "name": "db05",
+      "type": "Database",
+      "properties": {
+        "encrypted": true,
+        "public_access": false,
+        "backup_enabled": false,
+        "ssl_enforced": true,
+        "audit_logging_enabled": false,
+        "automatic_patching": true,
+        "least_privilege_db_roles": false,
+        "network_isolation_enabled": true
+      }
+    },
+    {
+      "id": "res-0016",
+      "name": "vnet01",
+      "type": "Network",
+      "properties": {
+        "flow_logs_enabled": true,
+        "default_deny": false,
+        "segmentation_enabled": true,
+        "dns_logging_enabled": true,
+        "nat_gateway_used": false,
+        "private_endpoints_enabled": true
+      }
+    },
+    {
+      "id": "res-0017",
+      "name": "vnet02",
+      "type": "Network",
+      "properties": {
+        "flow_logs_enabled": true,
+        "default_deny": false,
+        "segmentation_enabled": false,
+        "dns_logging_enabled": true,
+        "nat_gateway_used": true,
+        "private_endpoints_enabled": false
+      }
+    },
+    {
+      "id": "res-0018",
+      "name": "vnet03",
+      "type": "Network",
+      "properties": {
+        "flow_logs_enabled": false,
+        "default_deny": true,
+        "segmentation_enabled": true,
+        "dns_logging_enabled": true,
+        "nat_gateway_used": true,
+        "private_endpoints_enabled": true
+      }
+    },
+    {
+      "id": "res-0019",
+      "name": "vnet04",
+      "type": "Network",
+      "properties": {
+        "flow_logs_enabled": false,
+        "default_deny": true,
+        "segmentation_enabled": true,
+        "dns_logging_enabled": true,
+        "nat_gateway_used": false,
+        "private_endpoints_enabled": true
+      }
+    },
+    {
+      "id": "res-0020",
+      "name": "vnet05",
+      "type": "Network",
+      "properties": {
+        "flow_logs_enabled": false,
+        "default_deny": false,
+        "segmentation_enabled": true,
+        "dns_logging_enabled": true,
+        "nat_gateway_used": false,
+        "private_endpoints_enabled": false
+      }
+    },
+    {
+      "id": "res-0021",
+      "name": "fw01",
+      "type": "Firewall",
+      "properties": {
+        "default_deny_inbound": false,
+        "logging_enabled": false,
+        "unrestricted_ports_open": false,
+        "rules_reviewed_last_90_days": true,
+        "geo_blocking_enabled": true,
+        "intrusion_detection_enabled": true
+      }
+    },
+    {
+      "id": "res-0022",
+      "name": "fw02",
+      "type": "Firewall",
+      "properties": {
+        "default_deny_inbound": true,
+        "logging_enabled": false,
+        "unrestricted_ports_open": true,
+        "rules_reviewed_last_90_days": true,
+        "geo_blocking_enabled": true,
+        "intrusion_detection_enabled": true
+      }
+    },
+    {
+      "id": "res-0023",
+      "name": "fw03",
+      "type": "Firewall",
+      "properties": {
+        "default_deny_inbound": true,
+        "logging_enabled": true,
+        "unrestricted_ports_open": true,
+        "rules_reviewed_last_90_days": true,
+        "geo_blocking_enabled": true,
+        "intrusion_detection_enabled": false
+      }
+    },
+    {
+      "id": "res-0024",
+      "name": "fw04",
+      "type": "Firewall",
+      "properties": {
+        "default_deny_inbound": true,
+        "logging_enabled": true,
+        "unrestricted_ports_open": false,
+        "rules_reviewed_last_90_days": false,
+        "geo_blocking_enabled": true,
+        "intrusion_detection_enabled": true
+      }
+    },
+    {
+      "id": "res-0025",
+      "name": "fw05",
+      "type": "Firewall",
+      "properties": {
+        "default_deny_inbound": false,
+        "logging_enabled": true,
+        "unrestricted_ports_open": false,
+        "rules_reviewed_last_90_days": false,
+        "geo_blocking_enabled": true,
+        "intrusion_detection_enabled": true
+      }
+    },
+    {
+      "id": "res-0026",
+      "name": "user01",
+      "type": "User",
+      "properties": {
+        "mfa_enabled": true,
+        "password_expiry_enabled": false,
+        "admin_privileges": false,
+        "inactive_over_90_days": false,
+        "least_privilege_applied": false,
+        "service_account_reviewed": false,
+        "privileged_access_workstation_used": true
+      }
+    },
+    {
+      "id": "res-0027",
+      "name": "user02",
+      "type": "User",
+      "properties": {
+        "mfa_enabled": true,
+        "password_expiry_enabled": true,
+        "admin_privileges": false,
+        "inactive_over_90_days": false,
+        "least_privilege_applied": true,
+        "service_account_reviewed": true,
+        "privileged_access_workstation_used": true
+      }
+    },
+    {
+      "id": "res-0028",
+      "name": "user03",
+      "type": "User",
+      "properties": {
+        "mfa_enabled": true,
+        "password_expiry_enabled": false,
+        "admin_privileges": true,
+        "inactive_over_90_days": false,
+        "least_privilege_applied": true,
+        "service_account_reviewed": false,
+        "privileged_access_workstation_used": false
+      }
+    },
+    {
+      "id": "res-0029",
+      "name": "user04",
+      "type": "User",
+      "properties": {
+        "mfa_enabled": true,
+        "password_expiry_enabled": true,
+        "admin_privileges": false,
+        "inactive_over_90_days": true,
+        "least_privilege_applied": true,
+        "service_account_reviewed": true,
+        "privileged_access_workstation_used": true
+      }
+    },
+    {
+      "id": "res-0030",
+      "name": "user05",
+      "type": "User",
+      "properties": {
+        "mfa_enabled": true,
+        "password_expiry_enabled": true,
+        "admin_privileges": false,
+        "inactive_over_90_days": false,
+        "least_privilege_applied": false,
+        "service_account_reviewed": true,
+        "privileged_access_workstation_used": false
+      }
+    }
+  ]
+}
